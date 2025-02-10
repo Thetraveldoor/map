@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #mapCanvas {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mapCanvas"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('mapCanvas').setView([20.0, 0.0], 2);  // Initial view of the world map
+
+        // Add OpenStreetMap tile layer (free)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add markers for Prague and Agadir with detailed popups
+        var prague = L.marker([50.0755, 14.4378]).addTo(map);  // Prague coordinates
+        prague.bindPopup(`
+            <b>Prague</b><br>Capital of the Czech Republic
+            <ul>
+                <li><a href="https://your-vlog-link.com" target="_blank">Watch Prague Vlog</a></li>
+                <li><a href="https://your-tips-link.com" target="_blank">Tips and Tricks for Prague</a></li>
+                <li><a href="https://your-gallery-link.com" target="_blank">View Prague Gallery</a></li>
+            </ul>
+        `).openPopup();
+
+        var agadir = L.marker([30.4278, -9.5981]).addTo(map);  // Agadir coordinates
+        agadir.bindPopup(`
+            <b>Agadir</b><br>City in Morocco
+            <ul>
+                <li><a href="https://your-vlog-link-agadir.com" target="_blank">Watch Agadir Vlog</a></li>
+                <li><a href="https://your-tips-link-agadir.com" target="_blank">Tips and Tricks for Agadir</a></li>
+                <li><a href="https://your-gallery-link-agadir.com" target="_blank">View Agadir Gallery</a></li>
+            </ul>
+        `).openPopup();
+    </script>
+
+    <!-- Linking to External JavaScript (if you have custom JavaScript for tabs, etc.) -->
+    <script src="script.js"></script>
+</body>
+</html>
